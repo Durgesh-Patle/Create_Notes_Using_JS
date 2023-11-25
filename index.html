@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "poppins", sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #cf9aff, #95c0ff);
+        color: #fff;
+        padding-top: 4%;
+        padding-left: 5%;
+    }
+
+    .container h1 {
+        display: flex;
+        align-items: center;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .container h1 img {
+        width: 40px;
+    }
+
+    .container img {
+        width: 20px;
+        margin-right: 5px;
+    }
+
+    .container button {
+        display: flex;
+        align-items: center;
+        background: linear-gradient(#9418fd, #571094);
+        color: #fff;
+        font-size: 15px;
+        outline: 0;
+        border: 0;
+        border-radius: 40px;
+        padding: 12px 20px;
+        cursor: pointer;
+        margin-top: 1%;
+    }
+
+    .input-box {
+        position: relative;
+        max-width: 420px;
+        min-height: 150px;
+        background: #fff;
+        color: #333;
+        padding: 20px;
+        margin: 18px 0;
+        outline: none;
+        border-radius: 5px;
+    }
+
+    .input-box img {
+        position: absolute;
+        width: 25px;
+        bottom: 15px;
+        right: 15px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h1> <img src="notes.png"> Notes</h1>
+        <button class="btn"><img src="edit.png"> Create Notes</button>
+
+        <div class="notes-container">
+            <!-- <p contenteditable="true" class="input-box">
+                <img src="delete.png">
+            </p> -->
+        </div>
+    </div>
+
+
+    <!-- <script src="script.js"></script> -->
+
+    <script>
+
+        const notesContainer = document.querySelector(".notes-container");
+        const createBtn = document.querySelector(".btn");
+        let notes = document.querySelectorAll(".input-box");
+
+        
+
+        createBtn.addEventListener("click", function () {
+            let inputBox = document.createElement("p");
+            let img = document.createElement("img");
+            inputBox.className = "input-box";
+            inputBox.setAttribute("contenteditable", "true");
+            img.src = "delete.png";
+            notesContainer.appendChild(inputBox).appendChild(img);
+        })
+
+        notesContainer.addEventListener("click", function (e) {
+            if (e.target.tagName === "IMG") {
+                e.target.parentElement.remove();
+            }
+        })
+    </script>
+</body>
+
+</html>
